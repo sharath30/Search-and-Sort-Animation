@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta charset="utf-8">
+
+
+
+
+<link href="Site.css" type="text/css" rel="stylesheet">
+
+
+
+
+
+
+
+<script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="popover"]').popover();
+        });
+</script>
+
+
+<script>
+        function showNavbarContent(id) {
+            try {
+                var sorting = document.getElementById('navSortingAlgorithms');
+                var specials = document.getElementById('navSpecials');
+                
+                if (sorting.id !== id)
+                    sorting.classList.remove("in");
+                if (specials.id !== id)
+                    specials.classList.remove("in");
+
+            } catch (error) {
+
+            }
+        }
+    </script><script type="text/javascript" src="fcnt_js.php"></script></head>
+
+<body>
+
+	<div class="container body-content">
+	    <div class="navbar navbar-default navbar-fixed-top">
+       
+    </div>        <br>
+        
+        
+        <div class="table-responsive">
+
+    <table class="table table-bordered">
+        <thead>
+            <tr class="danger">
+                <th class="text-center">Name</th>
+                <th class="text-center">Best-case</th>
+                <th class="text-center">Average-case</th>
+                <th class="text-center">Worst-case</th>
+                <th class="text-center">Memory</th>
+                <th class="text-center">Stable</th>
+            </tr>
+        </thead>
+        <tbody class="text-center well-color">
+            <tr>
+                <td>MergeSort</td>
+                <td>n log n</td>
+                <td>n log n</td>
+                <td>n log n</td>
+                <td>worst: n</td>
+                <td>yes</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title text-center">MergeSort</h3>
+    </div>
+    <div class="panel-body well-color no-padding">
+        <br>
+        <p id="buttons" class="text-center">
+            <input id="inputField" type="number" onkeydown="if (event.keyCode == 13) add()" min="1" max="99" step="1" value="1" size="10" maxlength="2">
+            <button id="add" onclick="add()" class="btn btn-primary btn-sm">Add</button>
+            <button id="random" onclick="addRandom()" class="btn btn-primary btn-sm">Add 10 Random Key</button>
+            <button id="sort" onclick="initSort()" class="btn btn-primary btn-sm">Sort</button>
+       
+        </p>
+
+      <p id="buttons2" class="text-center" style="visibility: hidden;">
+          
+        </p>
+
+        <canvas class="canvas-sorting" id="paint" width="1108" height="500">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>
+    </div>
+</div>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title">Java Code</h3>
+    </div>
+    <div class="panel-body well-color">
+            <pre class="pre-inverted no-border">public void mergeSort(int[] array, int l, int r) {
+     if (l &lt; r) {
+          int m = (l + r) / 2;
+          mergeSort( array , l , m );
+          mergeSort( array , m + 1 , r );
+          merge( array , l , m , r );
+     }
+}
+
+public void merge(int[] array, int l, int m, int r) {
+     int[] temp = array.clone();
+     int left = l;
+     int right = m + 1;
+     int pos = left;
+
+     while (left &lt;= m || right &lt;= r) {
+          if (left &lt;= m &amp;&amp; right &lt;= r) {
+               if (temp[ left ] &lt;= temp[ right ]) {
+                    array[ pos ] = temp[ left ];
+                    left++;
+               } else {
+                    array[ pos ] = temp[ right ];
+                    right++;
+               }
+          } else if (left &lt;= m) {
+               array[ pos ] = temp[ left ];
+               left++;
+          } else if (right &lt;= r) {
+               array[ pos ] = temp[ right ];
+               right++;
+          }
+          pos++;
+     }
+} 
+            </pre>
+    </div>
+</div>
+
+
+
+<script src="mergeScript.js"></script>
+        
+       
+    
+
+
+</body></html>

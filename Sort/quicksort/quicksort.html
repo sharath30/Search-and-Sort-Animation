@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    
+
+<title>Quick Sort Graphical Simulation</title>
+
+<link href="Site.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+	<div class="container body-content">
+
+	<br />
+        <!-- content start -->
+        
+        <div class="table-responsive">
+
+    <table class="table table-bordered">
+        <thead>
+            <tr class="danger">
+                <th class="text-center">Name</th>
+                <th class="text-center">Best-case</th>
+                <th class="text-center">Average-case</th>
+                <th class="text-center">Worst-case</th>
+                <th class="text-center">Memory</th>
+                <th class="text-center">Stable</th>
+            </tr>
+        </thead>
+        <tbody class="text-center well">
+            <tr>
+                <td>QuickSort</td>
+                <td>n log n</td>
+                <td>n log n</td>
+                <td>n<sup>2</sup></td>
+                <td>average: log n <br /> worst: n</td>
+                <td>no</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3 class="panel-title text-center">QuickSort</h3>
+    </div>
+    <div class="panel-body well-color ">
+        <br />
+        <p id="buttons" class="text-center">
+            <input id="inputField" type="number" class="size" onkeydown="if (event.keyCode == 13) add()" min="1" max="99" step="1" value="1" size="10" maxlength="2">
+            <button id="add" onclick="add()" clas="btn btn-primary btn-lg">Add</button>
+            <button id="random" onclick="addRandom()" clas="btn btn-primary btn-sm">Add 10 Random Key</button>
+            <button id="sort" onclick="initSort()" clas="btn btn-primary btn-sm">Sort</button>
+           
+        </p>
+
+        
+
+        <canvas class="canvas-sorting" id="paint" width="1108" height="500">
+            Your browser does not support the HTML5 canvas tag. 
+        </canvas>
+    </div>
+</div>
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3 class="panel-title text-center">Java Code</h3>
+    </div>
+    <div class="panel-body well-coor">
+            <pre class="pre-inverted no-border">
+public void quickSort(int[] array, int left, int right) {
+     int i, j, v;
+     while ( right &gt; left ) {
+          j = right;
+          i = left - 1;
+          v = array[ right ];
+
+          while ( true ) {
+               do {
+                    i++;
+               } while ( array[ i ] &lt; v &amp;&amp; i &lt; j );
+               do {
+                    j--;
+               } while ( array[ j ] &gt; v &amp;&amp; i &lt; j );
+
+               if ( i &gt;= j )
+                    break;
+
+               swapKeys( array , i , j );
+
+          }
+
+          swapKeys( array , i , right );
+
+          if (( i - 1 - left ) &lt;= ( right - i - 1 )) {
+               quickSort( array , left , i - 1 );
+               left = i + 1;
+          } else {
+               quickSort( array , i + 1 , right );
+               right = i - 1;
+          }
+     }
+}
+
+public void swapKeys(int[] array, int i, int j) {
+     int temp;
+     temp = array[ i ];
+     array[ i ] = array[ j ];
+     array[ j ] = temp;
+} 
+            </pre>
+    </div>
+</div>
+
+
+
+<script src="quickScript.js"></script>
+        
+       
+    
+</body>
+
+</html>
